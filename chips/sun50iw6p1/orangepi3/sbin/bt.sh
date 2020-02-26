@@ -1,6 +1,7 @@
 #!/bin/bash
 
-MAC=$(echo -n 1c:1b; dd bs=1 count=4 if=/dev/random 2>/dev/null | hexdump -v -e '/1 ":%02X"')
+MAC=$(echo -n 1c:1b:; cut -d: -f3-6 < /sys/class/net/wlan0/address)
+
 
 rfkill unblock all
 echo "0" > /sys/class/rfkill/rfkill0/state

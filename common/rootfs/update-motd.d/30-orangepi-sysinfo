@@ -33,8 +33,10 @@ function display() {
 } # display
 
 function getboardtemp() {
-	board_temp=$(expr $(cat /sys/class/thermal/thermal_zone0/temp))
+	board_temp=$(expr $(cat /sys/class/thermal/thermal_zone0/temp) \/ 1000)
 } # getboardtemp
+
+
 
 #function get_ip_addresses() {
 #	# return up to 2 IPv4 address(es) comma separated
